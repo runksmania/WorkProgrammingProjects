@@ -44,6 +44,15 @@
     <ClInclude Include="DisplayManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PromotionManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OfferGenerator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Prize.cpp">
@@ -60,9 +69,6 @@
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Constants.cpp">
-      <Filter>Resource Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

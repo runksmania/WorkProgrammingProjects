@@ -68,18 +68,58 @@ public:
                         if (j == tierPrizeList.size() - 1)
                         {
                             cout << " " << prize.getPrize() << ": "
-                                << prize.getValue() << "." << endl;
+                                << "$" << prize.getValue() << "." << endl;
                         }
                         else
                         {
                             cout << " " << prize.getPrize() << ": "
-                                << prize.getValue() << ",";
+                                << "$" << prize.getValue() << ",";
                         }
                     }
                 }
             }
         }
         cout << endl << endl;
+    }
+
+    static void displayTopPrizes(TotalPrizes totalPrizes)
+    {
+        Prize first = totalPrizes.getFirstLargestPrize();
+        Prize second = totalPrizes.getSecondLargestPrize();
+        Prize third = totalPrizes.getThirdLargestPrize();
+
+        if (first.getPrize() != "")
+        {
+            cout << "Largest Prize: Tier " << first.getTier() << " "
+                << first.getPrize() << " "
+                << "$" << first.getValue() << "." << endl;
+
+            if (second.getPrize() != "")
+            {
+                cout << "Seoncd largest Prize: Tier " << second.getTier() << " "
+                    << second.getPrize() << " "
+                    << "$" << second.getValue() << "." << endl;
+
+                if (third.getPrize() != "")
+                {
+                    cout << "Third largest Prize: Tier " << third.getTier() << " "
+                        << third.getPrize() << " "
+                        << "$" << third.getValue() << ".\n\n";
+                }
+                else
+                {
+                    cout << "No third largest prize.\n\n";
+                }
+            }
+            else
+            {
+                cout << "No second largest prize.\nNo third largest prize.\n\n";
+            }
+        }
+        else
+        {
+            cout << "No prizes found.\n\n";
+        }
     }
 };
 

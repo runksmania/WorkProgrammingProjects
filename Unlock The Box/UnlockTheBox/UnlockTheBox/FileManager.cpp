@@ -134,7 +134,12 @@ TotalPrizes FileManager::loadPrizeFile()
 
     if (inputFile.good())
     {
-        int lineNum = 1;
+        //The line number in file = tier number of prize.
+        //Count is the number of prizes not won.
+        //Sum is the total value of all prizes not yet won.
+        //Average is the average of all prizes not yet won.
+        int lineNum = 1, count = 0, sum = 0;
+        double average = 0.0;
 
         while (inputFile.good())
         {
@@ -150,12 +155,40 @@ TotalPrizes FileManager::loadPrizeFile()
                 for (int i = 0; i < lineSplit.size(); i += 3)
                 {
                     bool beenWon = false;
+                    Prize prize(lineSplit[i], lineSplit[i + 1], to_string(lineNum), beenWon);
+
                     if (lineSplit[i + 2] == "1")
                     {
                         beenWon = true;
+                        prize.setBeenWon(beenWon);
                     }
+                    else
+                    {
+                        count++;
+                        int newPrizeValue = stoi(prize.getValue());
+                        sum += newPrizeValue;
 
-                    Prize prize(lineSplit[i], lineSplit[i + 1], beenWon);
+                        int firstPrizeValue = stoi(totalPrizes.getFirstLargestPrize().getValue());
+                        int secondPrizeValue = stoi(totalPrizes.getSecondLargestPrize().getValue());
+                        int thirdPrizeValue = stoi(totalPrizes.getThirdLargestPrize().getValue());
+
+                        if (newPrizeValue > firstPrizeValue)
+                        {
+                            totalPrizes.setThirdLargestPrize(totalPrizes.getSecondLargestPrize());
+                            totalPrizes.setSecondargestPrize(totalPrizes.getFirstLargestPrize());
+                            totalPrizes.setFirstLargestPrize(prize);
+                        }
+                        else if (newPrizeValue > secondPrizeValue)
+                        {
+                            totalPrizes.setThirdLargestPrize(totalPrizes.getSecondLargestPrize());
+                            totalPrizes.setSecondargestPrize(prize);
+                        }
+                        else if (newPrizeValue > thirdPrizeValue)
+                        {
+                            totalPrizes.setThirdLargestPrize(prize);
+                        }
+
+                    }
 
                     tierPrizes.push_back(prize);
                 }
@@ -164,6 +197,11 @@ TotalPrizes FileManager::loadPrizeFile()
                 lineNum++;
             }
         }
+
+        totalPrizes.setNumRemainingPrizes(count);
+        totalPrizes.setSum(sum);
+        average = sum / (double)count;
+        totalPrizes.setAverage(average);
     }
     else
     {
@@ -240,13 +278,13 @@ void FileManager::writePrizeFile(TotalPrizes totalPrizes)
             if (j == tierPrizeList.size() - 1)
             {
                 cout << prize.getPrize() << ","
-                    << prize.getValue() << ","
+                    << "$" << prize.getValue() << ","
                     << beenWon << endl;
             }
             else
             {
                 cout << prize.getPrize() << ","
-                    << prize.getValue() << ","
+                    << "$" << prize.getValue() << ","
                     << beenWon << ",";
             }
 

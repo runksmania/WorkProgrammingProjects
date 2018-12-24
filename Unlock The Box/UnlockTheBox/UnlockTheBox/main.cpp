@@ -1,17 +1,17 @@
 #include <iostream>
 #include <string>
 #include <unordered_map>
-#include "Constants.cpp"
+#include "Constants.h"
 #include "FileManager.h"
 #include "TotalPrizes.h"
 #include "DisplayManager.h"
+#include "PromotionManager.h"
 
 using namespace std;
 
 int main() 
 {
-    Constants constants = Constants();
-    FileManager *fileManager = new FileManager(constants.custFilename, constants.prizeFilename);
+    FileManager *fileManager = new FileManager(Constants::getCustFilename(), Constants::getPrizeFilename());
     
     unordered_map<string, Customer> custHash = fileManager->loadCustomerFile();
     TotalPrizes totalPrizes = fileManager->loadPrizeFile();
@@ -51,8 +51,12 @@ int main()
 
         case START_PROMOTION:
             
+            DisplayManager::displayTopPrizes(totalPrizes);
+
             while (promotionOver == "n" || promotionOver == "N")
             {
+                PromotionManager::runUnlockTheBox(custHash, totalPrizes);
+
                 cout << "Is the promotion over? (N)o continues, anything else exits.\n";
                 getline(cin, promotionOver);
                 cout << endl;

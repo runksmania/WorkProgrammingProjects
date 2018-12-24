@@ -8,16 +8,17 @@ class Prize
 private:
     string _value;
     string _prize;
+    string _tier;
     bool _beenWon;
 
-    //Disable default constructor.
-    Prize();
-
 public:
-    Prize(string prize, string value, bool beenWon);
+    Prize();
+    Prize(string prize, string value, string tierNum, bool beenWon);
     string getValue();
     string getPrize();
+    string getTier();
     bool getBeenWon();
+    void setBeenWon(bool beenWon);
     ~Prize();
 };
 

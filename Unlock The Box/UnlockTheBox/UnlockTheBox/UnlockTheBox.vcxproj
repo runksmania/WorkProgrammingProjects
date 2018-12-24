@@ -123,15 +123,17 @@
     <None Include="UnlockTheBoxNoFile" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Constants.h" />
     <ClInclude Include="Customer.h" />
     <ClInclude Include="DisplayManager.h" />
     <ClInclude Include="FileManager.h" />
+    <ClInclude Include="OfferGenerator.h" />
     <ClInclude Include="Prize.h" />
+    <ClInclude Include="PromotionManager.h" />
     <ClInclude Include="StringSplitter.h" />
     <ClInclude Include="TotalPrizes.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Constants.cpp" />
     <ClCompile Include="Customer.cpp" />
     <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="main.cpp" />
