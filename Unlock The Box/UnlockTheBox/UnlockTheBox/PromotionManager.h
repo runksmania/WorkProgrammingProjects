@@ -58,7 +58,7 @@ public:
                 while (!totalPrizes.findPrize(boxPrize))
                 {
                     cout << "\nPrize was not found.  Please re-enter the prize name: ";
-                    getline(cin, prize);
+                    getline(cin, boxPrize);
                 }
 
             }
