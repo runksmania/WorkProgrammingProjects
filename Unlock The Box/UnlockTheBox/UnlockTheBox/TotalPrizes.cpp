@@ -94,7 +94,7 @@ bool TotalPrizes::findPrize(string prize)
     {
         for (auto &&prizes : prizeVector)
         {
-            if (prize == prizes.getPrize())
+            if (prize == prizes.getPrize() && !prizes.getBeenWon())
             {
                 prizes.setBeenWon(true);
                 _sum -= stoi(prizes.getValue());

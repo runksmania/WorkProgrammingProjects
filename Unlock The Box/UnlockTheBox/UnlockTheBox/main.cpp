@@ -53,6 +53,11 @@ int main()
             
             DisplayManager::displayTopPrizes(totalPrizes);
 
+            if (totalPrizes.getNumRemainingPrizes() == 0)
+            {
+                promotionOver = "y";
+            }
+
             while (promotionOver == "n" || promotionOver == "N")
             {
                 PromotionManager::runUnlockTheBox(custHash, totalPrizes);

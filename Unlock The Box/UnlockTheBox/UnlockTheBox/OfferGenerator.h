@@ -14,16 +14,16 @@ public:
         string offerType = "Cash";
         string offer = "0";
         
-        double offerDouble = totalPrizes.getAverage() * .7;
+        double offerDouble = totalPrizes.getAverage() * .65;
         offer = to_string((int)ceil(offerDouble));
 
         srand(time(NULL));
 
 
-        if (rand() % 2 == 1)
+        if (rand() % 100 > 50)
         {
             offerType = "FreePlay";
-            offer = to_string((int)ceil(offerDouble * 1.5));
+            offer = to_string((int)ceil(offerDouble * 1.25));
         }
 
         return (offer + " " + offerType);

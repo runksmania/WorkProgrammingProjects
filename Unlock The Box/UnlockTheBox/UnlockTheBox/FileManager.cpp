@@ -19,10 +19,14 @@ unordered_map<string, Customer> FileManager::loadCustomerFile()
 
     if (inputFile.good())
     {
+        string currentLine, prizesWonLine;
+
+        //Get first two information lines to discard.
+        getline(inputFile, currentLine);
+        getline(inputFile, currentLine);
+
         while (inputFile.good())
         {
-            string currentLine, prizesWonLine;
-
             getline(inputFile, currentLine);
             vector<string> lineSplit = StringSplitter::split(currentLine, ",");
             getline(inputFile, prizesWonLine);
@@ -61,6 +65,8 @@ void FileManager::saveCustomerFile(unordered_map<string, Customer> custHash)
 
     if (outputFile.good())
     {
+        outputFile << "Customer Name,Id number,number prizes won\nList of Prizes\n";
+
         for (auto cust : custNames)
         {
             Customer customer = custHash[cust];
@@ -70,15 +76,15 @@ void FileManager::saveCustomerFile(unordered_map<string, Customer> custHash)
                 << customer.getId() << ","
                 << customer.getNumPrizesWon() << endl;
 
-            for (auto prize : prizesWon)
+            for (int i = 0; i < prizesWon.size(); i++)
             {
-                if (prize == prizesWon[prizesWon.size() - 1])
+                if (i == prizesWon.size() - 1)
                 {
-                    outputFile << prize << endl;
+                    outputFile << prizesWon[i] << endl;
                 }
                 else
                 {
-                    outputFile << prize << ",";
+                    outputFile << prizesWon[i] << ",";
                 }
             }
         }
@@ -140,11 +146,14 @@ TotalPrizes FileManager::loadPrizeFile()
         //Average is the average of all prizes not yet won.
         int lineNum = 1, count = 0, sum = 0;
         double average = 0.0;
+        string currentLine;
+
+        //Get information line and do nothing with it.
+        getline(inputFile, currentLine);
 
         while (inputFile.good())
         {
             vector<Prize> tierPrizes;
-            string currentLine;
 
             getline(inputFile, currentLine);
 
@@ -218,6 +227,8 @@ void FileManager::savePrizeFile(TotalPrizes totalPrizes)
 
     if (outputFile.good())
     {
+        outputFile << "Prize name,Value, Each line is a prize tier.\n";
+
         for (int i = 0; i < totalPrizes.getTotalPrizeListSize(); i++)
         {
             vector<Prize> tierPrizeList = totalPrizes.getTierPrizeList(i);

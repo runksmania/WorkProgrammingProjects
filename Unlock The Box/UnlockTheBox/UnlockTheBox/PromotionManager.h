@@ -62,6 +62,11 @@ public:
                 }
 
             }
+            
+            if (!offerTaken)
+            {
+                prize = boxPrize;
+            }
         }
 
         prizesWonList.push_back(prize);

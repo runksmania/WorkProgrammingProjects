@@ -14,6 +14,12 @@ public:
     
     static void displayPreviousWinners(unordered_map<string, Customer> custHash)
     {
+        if (custHash.empty())
+        {
+            cout << "No previous winners found.\n\n";
+            return;
+        }
+
         vector<string> custNames;
 
         //Alphabatize customers.
@@ -73,8 +79,17 @@ public:
                         else
                         {
                             cout << " " << prize.getPrize() << ": "
-                                << "$" << prize.getValue() << ",";
+                                << "$" << prize.getValue();
                         }
+                    }
+
+                    if (prize.getBeenWon() && j == tierPrizeList.size() - 1)
+                    {
+                        cout << ".\n";
+                    }
+                    else if((!prize.getBeenWon() && j + 1 < tierPrizeList.size()) && !tierPrizeList[j + 1].getBeenWon())
+                    {
+                        cout << ",";
                     }
                 }
             }
@@ -119,6 +134,7 @@ public:
         else
         {
             cout << "No prizes found.\n\n";
+            return;
         }
     }
 };
