@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <iostream>
+#include "Constants.h"
 #include "FileManager.h"
 #include "StringSplitter.h"
 #include "TotalPrizes.h"
@@ -13,9 +14,21 @@ FileManager::FileManager(string custFileName, string prizeFileName)
 unordered_map<string, Customer> FileManager::loadCustomerFile()
 {
     unordered_map<string, Customer> custHash;
-    ifstream inputFile;
+    ifstream inputFile(_custFileName);
 
-    inputFile.open(_custFileName);
+    if (!inputFile.good())
+    {
+        ofstream createFile;
+        createFile.open(_custFileName);
+
+        createFile << Constants::defaultcustomerFile();
+        createFile.close();
+    }
+
+    if (!inputFile.is_open())
+    {
+        inputFile.open(_custFileName);
+    }
 
     if (inputFile.good())
     {
@@ -41,11 +54,12 @@ unordered_map<string, Customer> FileManager::loadCustomerFile()
     }
     else
     {
-        cout << "Error reading file.\n";
+        cout << "Error reading customer file.\nThe system will now exit.\n";
+        system("pause");
+        exit(EXIT_FAILURE);
     }
 
     inputFile.close();
-
     return custHash;
 }
 
@@ -91,8 +105,10 @@ void FileManager::saveCustomerFile(unordered_map<string, Customer> custHash)
     }
     else
     {
-        cout << "Error writing file.\n";
+        cout << "Error writing customer file.\n";
     }
+
+    outputFile.close();
 }
 
 void FileManager::writeCustomerFile(unordered_map<string, Customer> custHash)
@@ -135,8 +151,21 @@ void FileManager::writeCustomerFile(unordered_map<string, Customer> custHash)
 TotalPrizes FileManager::loadPrizeFile()
 {
     TotalPrizes totalPrizes = TotalPrizes();
-    ifstream inputFile;
-    inputFile.open(_prizeFileName);
+    ifstream inputFile(_prizeFileName);
+    
+    if (!inputFile.good())
+    {
+        ofstream createFile;
+        createFile.open(_prizeFileName);
+        
+        createFile << Constants::defaultPrizeFile();
+        createFile.close();
+    }
+
+    if (!inputFile.is_open())
+    {
+        inputFile.open(_prizeFileName);
+    }
 
     if (inputFile.good())
     {
@@ -214,9 +243,12 @@ TotalPrizes FileManager::loadPrizeFile()
     }
     else
     {
-        cout << "Error reading file.\n";
+        cout << "Error reading prize file.\nThe system will now exit.\n";
+        system("pause");
+        exit(EXIT_FAILURE);
     }
 
+    inputFile.close();
     return totalPrizes;
 }
 
@@ -266,8 +298,10 @@ void FileManager::savePrizeFile(TotalPrizes totalPrizes)
     }
     else
     {
-        cout << "Error writing file.\n";
+        cout << "Error writing prize file.\n";
     }
+
+    outputFile.close();
 }
 
 void FileManager::writePrizeFile(TotalPrizes totalPrizes)

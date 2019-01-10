@@ -118,8 +118,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="customerFile.csv" />
-    <None Include="prizeFile.csv" />
+    <None Include="Resource Files\customerFile.csv" />
+    <None Include="Resource Files\prizeFile.csv" />
     <None Include="UnlockTheBoxNoFile" />
   </ItemGroup>
   <ItemGroup>

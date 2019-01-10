@@ -18,10 +18,10 @@
     <None Include="UnlockTheBoxNoFile">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="customerFile.csv">
+    <None Include="Resource Files\customerFile.csv">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="prizeFile.csv">
+    <None Include="Resource Files\prizeFile.csv">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
