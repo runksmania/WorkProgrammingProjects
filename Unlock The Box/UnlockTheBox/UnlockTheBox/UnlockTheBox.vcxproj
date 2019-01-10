@@ -119,7 +119,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="Resource Files\customerFile.csv" />
-    <None Include="Resource Files\prizeFile.csv" />
     <None Include="UnlockTheBoxNoFile" />
   </ItemGroup>
   <ItemGroup>

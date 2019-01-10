@@ -21,9 +21,6 @@
     <None Include="Resource Files\customerFile.csv">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Resource Files\prizeFile.csv">
-      <Filter>Resource Files</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Prize.h">
