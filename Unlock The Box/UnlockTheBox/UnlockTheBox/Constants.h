@@ -35,7 +35,7 @@ public:
             "Cash 150, 150, 0, Cash 150, 150, 0\n"
             "Cash 125, 125, 0, Cash 125, 125, 0\n"
             "Free Play 80, 80, 0, Free Play 80, 80, 0, Cash 80, 80, 0, Cash 80, 80, 0\n"
-            "Cash 25, 25, 0, Cash 25, 25, 0, Cash 25, 25, 0, Cash 25, 25, 0, Cash 25, 25, 0, Cash 25, 25, 0, Cash 25, 25, 0, Cash 25, 25, 0, Cash 25, 25, 0, Cash 25, 25, 0, Cash 25, 25, 0\n"
+            "Cash 25,0, Cash 25,0, Cash 25,0, Cash 25,0, Cash 25,0, Cash 25,0, Cash 25,0, Cash 25,0, Cash 25,0, Cash 25,0, Cash 25,0\n"
             "Cash 15, 15, 0\n";
     }
 
