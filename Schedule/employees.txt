@@ -1,9 +1,0 @@
-name: Art Danielion
-shift: open
-first day off: open
-second day off: open
-
-name: Michael Cottrell
-shift: swing
-sirst day off: friday
-second day off: saturday
